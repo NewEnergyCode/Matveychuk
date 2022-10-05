@@ -2,7 +2,12 @@ package Car;
 
 public class Main {
     public static void main(String[] args) {
-        Car.start();
+
+
+        Car carMerscedes = new Car();
+
+        carMerscedes.start();
+
 
     }
 }

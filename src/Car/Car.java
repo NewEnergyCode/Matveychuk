@@ -2,7 +2,7 @@ package Car;
 
 public class Car {
 
-    public static void start() {
+    public void start() {
 
         startElectricity();
 
@@ -11,15 +11,15 @@ public class Car {
         startFuelSystem();
     }
 
-    private static void startElectricity() {
+    private void startElectricity() {
         System.out.println("Start engine.");
     }
 
-    private static void startCommand(){
+    private void startCommand() {
         System.out.println("Select radio.");
     }
 
-    private static void startFuelSystem(){
+    private void startFuelSystem() {
         System.out.println("Start moving.");
     }
 }
