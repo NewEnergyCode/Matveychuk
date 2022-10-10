@@ -33,15 +33,12 @@ public class Array {
         System.out.print("Enter size of array: ");
         Scanner scanner = new Scanner(System.in);
         int scan = scanner.nextInt();
-        int size = 0;
-        if (scan >= 1 && scan <= 1000) {
-            size = scan;
-        } else {
+        while (scan >= 1000 && scan <= 1) {
             System.out.print("Constraints: 1 <= nums.length <= 1000." +
                     "\nTry again.\n");
-            scannerNumbersArrays();
+            scan = scanner.nextInt();
         }
-        return size;
+        return scan;
     }
 
     public static int[] scannerNumbersArrays() {
@@ -53,15 +50,16 @@ public class Array {
         for (int i = 0; i <= numsAr.length - 1; i++) {
             System.out.print("Enter number of array: ");
             int nums = scanner.nextInt();
-            if (nums >= -1000000 && nums <= 1000000) {
-                numsWithConstraints = nums;
-                numsAr[i] = numsWithConstraints;
-            } else {
+            while (nums >= -1000000 && nums >= 1000000) {
                 System.out.print("Constraints: -10^6 <= nums[i] <= 10^6." +
-                        "\nTry again.\n");
-                scannerNumbersArrays();
-                break;
+                        "\nTry again.\n" +
+                        "Enter number of array: ");
+                nums = scanner.nextInt();
+
             }
+            numsWithConstraints = nums;
+            numsAr[i] = numsWithConstraints;
+
 
         }
         System.out.println("Array: " + Arrays.toString(numsAr) + ", after running: "
