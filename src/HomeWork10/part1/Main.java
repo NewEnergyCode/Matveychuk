@@ -2,32 +2,53 @@ package HomeWork10.part1;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        ArrayList<String> list0 = new ArrayList<>();
-        list0.add("first");
-        list0.add("second");
-        list0.add("yes");
-        list0.add("no");
-        list0.add("pig");
-        list0.add("box");
-        list0.add("seven");
-        list0.add("Bob");
-        list0.add("car");
-        list0.add("pink");
-        list0.add("road");
-        list0.add("gun");
-        list0.add("sun");
-        list0.add("mouse");
-        list0.add("finish");
-//        System.out.println("Result: " + list0);
-//        System.out.println(list0.size());
-        countOccurance(list0);
+        ArrayList<String> listStr = new ArrayList<>();
+        listStr.add("first");
+        listStr.add("second");
+        listStr.add("yes");
+        listStr.add("no");
+        listStr.add("pig");
+        listStr.add("box");
+        listStr.add("seven");
+        listStr.add("Bob");
+        listStr.add("car");
+        listStr.add("pink");
+        listStr.add("road");
+        listStr.add("gun");
+        listStr.add("sun");
+        listStr.add("mouse");
+        listStr.add("finish");
+
+        ArrayList<String> listStr2 = new ArrayList<>();
+        listStr2.add("first");
+        listStr2.add("first");
+        listStr2.add("yes");
+        listStr2.add("no");
+        listStr2.add("seven");
+        listStr2.add("seven");
+        listStr2.add("seven");
+
+
+        ArrayList<Integer> listInt = new ArrayList<>();
+        listInt.add(1);
+        listInt.add(3);
+        listInt.add(2);
+        listInt.add(2);
+        listInt.add(3);
+        listInt.add(23);
+
+
+        countOccurance(listStr);
         toList();
+        System.out.println(findUnique(listInt));
+        calcOccurance(listStr2);
     }
 
     public static void countOccurance(ArrayList<String> list) {
@@ -69,7 +90,43 @@ public class Main {
         return listSrting;
     }
 
+    public static ArrayList<Integer> findUnique(ArrayList<Integer> list) {
+
+        ArrayList<Integer> findUnique = new ArrayList<>();
+
+        for (int i = 0; i < list.size(); i++) {
+            Integer unic = list.get(i);
+            int flag = 1;
+            for (int j = 0; j < list.size(); j++) {
+                if ((i != j) && (list.get(j).equals(unic))) {
+                    flag = 0;
+                    break;
+                }
+            }
+            if (flag == 1) {
+                findUnique.add(unic);
+            }
+
+        }
+        return findUnique;
+
+    }
+
+    public static void calcOccurance(ArrayList<String> list) {
+
+
+        Map<Object, Integer> counter = new HashMap<>();
+        for (String x : list) {
+            int newValue = counter.getOrDefault(x, 0) + 1;
+            counter.put(x, newValue);
+        }
+
+        System.out.println(counter);
+
+
+    }
 
 
 }
+
 
