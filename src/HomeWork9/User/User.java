@@ -1,31 +1,30 @@
 package HomeWork9.User;
 
-public class User {
+public abstract class User {
 
 
+    public int magnitude;
     private static String name;
 
-    private static String overcomeWall;
+    public int getMagnitude() {
+        return magnitude;
+    }
+
+    public void setMagnitude(int magnitude) {
+        this.magnitude = magnitude;
+    }
 
     public static String getName() {
         return name;
     }
 
-    public static void setName(String name) {
-        User.name = name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String userInfo() {
-return null;
-    }
+    public abstract String userInfo();
 
-    public User overcomeWall() {
 
-        return null;
-    }
-public User overcomeTread(){
-        return null;
-}
 
 
 }

@@ -1,9 +1,10 @@
 package HomeWork9.User;
 
-public class Obstacle {
+public abstract class Obstacle {
 
-    public void magnitude() {
+    public abstract String magnitude();
+    public abstract String overcomeWall(String user);
 
-    }
+    public abstract String overcomeTreadmill(String user);
 
 }
