@@ -4,15 +4,15 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Employee employeeMax = new Employee("Sidorov Oleg Olegovich", "Dantist",
-                "dantist@gmail.com", "0932223344", 20);
+        FileNavigator fileNavigator = new FileNavigator();
+
+        FileData firstFileData = new FileData("FirstFileforExample", 1, "c:/path/add");
+        FileData secondFileData = new FileData("SecondFileforExample", 3, "c:/path/add/one");
+        FileData thirdFileData = new FileData("ThirdFileforExample", 5, "c:/path/add");
 
 
-        System.out.println("Full name: " + employeeMax.getFullName() +
-                "\nPosition: " + employeeMax.getPosition() +
-                "\nEmail: " + employeeMax.getEmail() +
-                "\nPhone: " + employeeMax.getPhone() +
-                "\nAge: " + employeeMax.getAge() +
-                "\n_______________________");
+        fileNavigator.add("c:/path/add", firstFileData);
+        fileNavigator.add("c:/path/addd", secondFileData);
+        fileNavigator.add("c:/path/add", thirdFileData);
     }
 }
