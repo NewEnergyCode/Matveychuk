@@ -1,22 +1,17 @@
 public class Main {
 
-
     public static void main(String[] args) {
 
 
-        System.out.println("Full name: " + Employee.employee2.getFullName() +
-                "\nPosition: " + Employee.employee2.getPosition() +
-                "\nEmail: " + Employee.employee2.getEmail() +
-                "\nPhone: " + Employee.employee2.getPhone() +
-                "\nAge: " + Employee.employee2.getAge() +
-                "\n_______________________");
+        FileNavigator fileNavigator = new FileNavigator();
+
+        FileData firstFileData = new FileData("FirstFileforExample", 1, "c:/path/add");
+        FileData secondFileData = new FileData("SecondFileforExample", 3, "c:/path/add/one");
+        FileData thirdFileData = new FileData("ThirdFileforExample", 5, "c:/path/add");
 
 
-        System.out.println("Full name: " + Employee.employee.getFullName() +
-                "\nPosition: " + Employee.employee.getPosition() +
-                "\nEmail: " + Employee.employee.getEmail() +
-                "\nPhone: " + Employee.employee.getPhone() +
-                "\nAge: " + Employee.employee.getAge() +
-                "\n_______________________");
+        fileNavigator.add("c:/path/add", firstFileData);
+        fileNavigator.add("c:/path/addd", secondFileData);
+        fileNavigator.add("c:/path/add", thirdFileData);
     }
 }
