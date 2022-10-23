@@ -1,7 +1,9 @@
-public class FileData {
+import java.util.ArrayList;
+
+public class FileData extends ArrayList<FileData> {
 
     private  String fileName;
-    private  int sizeInByte;
+    private int sizeInByte;
     private  String path;
 
     public FileData(String fileName, int sizeInByte, String path) {
