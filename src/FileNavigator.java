@@ -1,3 +1,4 @@
+import javax.management.ObjectName;
 import java.util.*;
 
 public class FileNavigator {
@@ -48,6 +49,23 @@ public class FileNavigator {
             }
         }
 
+    }
+
+    public List<FileData> sortBySize() {
+
+        List<FileData> sortBySize = new ArrayList<>();
+        for (String key : fileListMap.keySet()) {
+            sortBySize.addAll(fileListMap.get(key));
+        }
+        Collections.sort(sortBySize, new Comparator<FileData>() {
+            @Override
+            public int compare(FileData o1, FileData o2) {
+                return o1.getSizeInByte() - o2.getSizeInByte();
+            }
+        });
+
+
+        return sortBySize;
     }
 
 }

@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -23,6 +25,12 @@ public class Main {
                 In entered`s you sizes are next files: \n""" +
                 fileNavigator.filterBySize(4));
 
-        fileNavigator.remove("c:/path/add");
+//        fileNavigator.remove("c:/path/add");
+        System.out.println("""
+                Before sorts: \n""" + fileNavigator.fileListMap +
+                "\nAfter sorts: \n" +
+                fileNavigator.sortBySize());
+
     }
 }
+
