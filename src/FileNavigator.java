@@ -16,4 +16,18 @@ public class FileNavigator {
         System.out.println(fileListMap.get(path));
     }
 
+
+    public ArrayList<FileData> find(String path) {
+        for (FileData s : fileListMap.get(path)) {
+            if (fileListMap.containsKey(path)) {
+                return fileListMap.get(path);
+            }
+        }
+        return null;
+    }
 }
+
+
+
+
+
