@@ -11,7 +11,7 @@ public class Main {
         FileData fourthFileData = new FileData("FourthFileforExample", 14, "c:/path/add/one");
 
 
-        fileNavigator.add (firstFileData.getPath(), firstFileData);
+        fileNavigator.add(firstFileData.getPath(), firstFileData);
         fileNavigator.add(secondFileData.getPath(), secondFileData);
         fileNavigator.add(thirdFileData.getPath(), thirdFileData);
         fileNavigator.add(fourthFileData.getPath(), fourthFileData);
@@ -21,6 +21,8 @@ public class Main {
 
         System.out.println("""
                 In entered`s you sizes are next files: \n""" +
-                fileNavigator.filterBySize(14));
+                fileNavigator.filterBySize(4));
+
+        fileNavigator.remove("c:/path/add");
     }
 }

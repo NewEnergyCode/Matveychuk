@@ -39,6 +39,17 @@ public class FileNavigator {
         return sizeBite;
     }
 
+    public void remove(String path) {
+        for (FileData s : fileListMap.get(path)) {
+            if (fileListMap.containsKey(path)) {
+                fileListMap.remove(path);
+                System.out.println(fileListMap);
+
+            }
+        }
+
+    }
+
 }
 
 
