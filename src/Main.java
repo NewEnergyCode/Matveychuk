@@ -19,5 +19,9 @@ public class Main {
         System.out.println("""
                 In entered`s you path situated next list: \n""" +
                 fileNavigator.find("c:/path/add/one"));
+
+        System.out.println("""
+                In entered`s you sizes are next files: \n""" +
+                fileNavigator.filterBySize(14));
     }
 }

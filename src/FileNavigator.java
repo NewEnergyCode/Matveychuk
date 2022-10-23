@@ -1,9 +1,8 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class FileNavigator {
     Map<String, ArrayList<FileData>> fileListMap = new HashMap<>();
+
 
     public void add(String path, FileData fileData) {
         if (!fileListMap.containsKey(path)) {
@@ -14,6 +13,7 @@ public class FileNavigator {
         }
         System.out.println(fileListMap.containsKey(path));
         System.out.println(fileListMap.get(path));
+
     }
 
 
@@ -25,7 +25,24 @@ public class FileNavigator {
         }
         return null;
     }
+
+    public List<FileData> filterBySize(int size) {
+        System.out.println("your key: " + fileListMap.values());
+        List<FileData> sizeBite = new ArrayList<>();
+        for (String key : fileListMap.keySet()) {
+            for (FileData s : fileListMap.get(key)) {
+                if (s.getSizeInByte() <= size) {
+                    sizeBite.add(s);
+                }
+            }
+        }
+        return sizeBite;
+    }
+
 }
+
+
+
 
 
 
