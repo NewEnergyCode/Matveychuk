@@ -1,36 +1,44 @@
-import java.util.Comparator;
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.io.*;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        CountingWordsInBook cwb = new CountingWordsInBook();
 
-        FileNavigator fileNavigator = new FileNavigator();
-
-        FileData firstFileData = new FileData("FirstFileforExample", 1, "c:/path/add");
-        FileData secondFileData = new FileData("SecondFileforExample", 3, "c:/path/add/one");
-        FileData thirdFileData = new FileData("ThirdFileforExample", 5, "c:/path/add");
-        FileData fourthFileData = new FileData("FourthFileforExample", 14, "c:/path/add/one");
+        Map<String, File> bookLibrary = new HashMap<>();
+        bookLibrary.put("ГИД JAVA", new File("src/Library/ГИД JAVA.txt"));
 
 
-        fileNavigator.add(firstFileData.getPath(), firstFileData);
-        fileNavigator.add(secondFileData.getPath(), secondFileData);
-        fileNavigator.add(thirdFileData.getPath(), thirdFileData);
-        fileNavigator.add(fourthFileData.getPath(), fourthFileData);
-        System.out.println("""
-                In entered`s you path situated next list: \n""" +
-                fileNavigator.find("c:/path/add/one"));
+        try (FileReader fileReader = new FileReader(bookLibrary.get("ГИД JAVA"));
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+            Map<String, Integer> uniqueWords = new HashMap<>();
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] words = cwb.removeExtraCharacters(line);
 
-        System.out.println("""
-                In entered`s you sizes are next files: \n""" +
-                fileNavigator.filterBySize(4));
+                for (String s : words) {
+                    if (s.length() < 3) continue;
+                    if (uniqueWords.containsKey(s)) uniqueWords.put(s, uniqueWords.get(s) + 1);
+                    else uniqueWords.put(s, 1);
+                }
 
-//        fileNavigator.remove("c:/path/add");
-        System.out.println("""
-                Before sorts: \n""" + fileNavigator.fileListMap +
-                "\nAfter sorts: \n" +
-                fileNavigator.sortBySize());
+            }
+            System.out.println(uniqueWords);
+        } catch (IOException e) {
+            System.out.println("File not found!");
+            throw new RuntimeException(e);
+        }
 
     }
 }
+
+
 
