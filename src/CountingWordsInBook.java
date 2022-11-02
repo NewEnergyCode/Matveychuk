@@ -10,7 +10,7 @@ public class CountingWordsInBook {
     Map<String, Integer> uniqueWords = new HashMap<>();
 
     public Map<String, Integer> uniqueWordsCounter(File file) {
-        Map<String, Integer> uniqueWords = new HashMap<>();
+//        Map<String, Integer> uniqueWords = new HashMap<>();
         try (FileReader fileReader = new FileReader(file);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
@@ -45,8 +45,8 @@ public class CountingWordsInBook {
     public List<BooksLibrary> sortBySize(File file) {
 
         List<BooksLibrary> sortBySize = new ArrayList<>();
-        for (String key : uniqueWords.keySet()) {
-            sortBySize.addAll(uniqueWords.get(key));
+        for (String num : uniqueWords.keySet()) {
+            sortBySize.addAll(uniqueWords.get(num));
         }
         Collections.sort(sortBySize, new Comparator<BooksLibrary>() {
             @Override
