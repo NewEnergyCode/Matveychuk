@@ -42,23 +42,7 @@ public class CountingWordsInBook {
     }
 
 
-    public List<BooksLibrary> sortBySize(File file) {
 
-        List<BooksLibrary> sortBySize = new ArrayList<>();
-        for (String num : uniqueWords.keySet()) {
-            sortBySize.addAll(uniqueWords.get(num));
-        }
-        Collections.sort(sortBySize, new Comparator<BooksLibrary>() {
-            @Override
-            public int compare(BooksLibrary o1, BooksLibrary o2) {
-                return o1.getAmountwords() - o2.getAmountwords();
-            }
-
-        });
-
-
-        return sortBySize;
-    }
 
 
 }
