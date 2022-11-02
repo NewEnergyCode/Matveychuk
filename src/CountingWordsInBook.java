@@ -7,11 +7,12 @@ import java.util.*;
 public class CountingWordsInBook {
     private static final String bookDividersForSplit = "•!,[].{}:;«»/`'’()<>?*|\"~•";
 
+    Map<String, Integer> uniqueWords = new HashMap<>();
 
     public Map<String, Integer> uniqueWordsCounter(File file) {
         Map<String, Integer> uniqueWords = new HashMap<>();
-        try (FileReader fileReader = new FileReader(file) ;
-        BufferedReader bufferedReader = new BufferedReader(fileReader)){
+        try (FileReader fileReader = new FileReader(file);
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
             String line;
             while ((line = bufferedReader.readLine()) != null) {
@@ -25,7 +26,7 @@ public class CountingWordsInBook {
 
             }
 
-        } catch(IOException e){
+        } catch (IOException e) {
             System.out.println("File not found!");
             throw new RuntimeException(e);
         }
@@ -44,14 +45,15 @@ public class CountingWordsInBook {
     public List<BooksLibrary> sortBySize(File file) {
 
         List<BooksLibrary> sortBySize = new ArrayList<>();
-        for (String key : .keySet()) {
-            sortBySize.addAll(fileListMap.get(key));
+        for (String key : uniqueWords.keySet()) {
+            sortBySize.addAll(uniqueWords.get(key));
         }
-        Collections.sort(sortBySize, new Comparator<FileData>() {
+        Collections.sort(sortBySize, new Comparator<BooksLibrary>() {
             @Override
-            public int compare(FileData o1, FileData o2) {
-                return o1.getSizeInByte() - o2.getSizeInByte();
+            public int compare(BooksLibrary o1, BooksLibrary o2) {
+                return o1.getAmountwords() - o2.getAmountwords();
             }
+
         });
 
 
