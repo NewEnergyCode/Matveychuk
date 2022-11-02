@@ -5,11 +5,21 @@ public class BooksLibrary {
 
     private String name;
 
-    private File file = new File ("src/Library");
+    private File file = new File("src/Library");
+    private Integer amountwords;
 
-    public BooksLibrary(String name, File file) {
+    public BooksLibrary(String name, File file, Integer amountwords) {
         this.name = name;
         this.file = file;
+        this.amountwords = amountwords;
+    }
+
+    public Integer getAmountwords() {
+        return amountwords;
+    }
+
+    public void setAmountwords(Integer amountwords) {
+        this.amountwords = amountwords;
     }
 
     public String getName() {
