@@ -21,7 +21,9 @@ public class Main {
         if (bookLibrary.containsKey(bookName)) {
             CountingWordsInBook cwb = new CountingWordsInBook();
             CountingWordsInBook countingWordsInBook = new CountingWordsInBook();
-            System.out.println(countingWordsInBook.uniqueWordsCounter(bookLibrary.get("ГИД JAVA")));
+            countingWordsInBook.uniqueWordsCounter(bookLibrary.get("ГИД JAVA"));
+            countingWordsInBook.sortBySize();
+//            System.out.println(countingWordsInBook.uniqueWordsCounter(bookLibrary.get("ГИД JAVA")));
         }else {
             System.out.println("Your book is not found!");
         }

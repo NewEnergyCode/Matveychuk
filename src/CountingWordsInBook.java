@@ -41,8 +41,17 @@ public class CountingWordsInBook {
         return line.toLowerCase().split(" ");
     }
 
+    public void sortBySize() {
 
-
+      List <Map.Entry<String, Integer>> sortAmount = new ArrayList<>(uniqueWords.entrySet());
+        Collections.sort(sortAmount, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o1.getValue() - o2.getValue();
+            }
+        }.reversed());
+        System.out.println(sortAmount);
+    }
 
 
 }
