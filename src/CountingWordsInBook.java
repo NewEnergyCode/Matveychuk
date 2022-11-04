@@ -59,17 +59,21 @@ public class CountingWordsInBook {
 
     public void printFirstTenWords(List<Map.Entry<String, Integer>> list) {
         int a = 0;
-
+        int b = 0;
         for (Map.Entry<String, Integer> entry : list) {
             String key = entry.getKey();
             Integer value = entry.getValue();
             System.out.println(a + 1 + ". " + key + ": " + value);
             a++;
+
             if (a > 9)
                 break;
         }
+        for (Map.Entry<String, Integer> i:list) {
+            if(i.getValue().equals(1)) b++;
+        }
 
-
+        System.out.println("Uniqueness words: " + b);
     }
 
 
