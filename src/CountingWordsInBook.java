@@ -9,8 +9,9 @@ public class CountingWordsInBook {
 
     Map<String, Integer> uniqueWords = new HashMap<>();
 
+
     public Map<String, Integer> uniqueWordsCounter(File file) {
-//        Map<String, Integer> uniqueWords = new HashMap<>();
+
         try (FileReader fileReader = new FileReader(file);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
@@ -30,6 +31,7 @@ public class CountingWordsInBook {
             System.out.println("File not found!");
             throw new RuntimeException(e);
         }
+
         return uniqueWords;
     }
 
@@ -41,16 +43,33 @@ public class CountingWordsInBook {
         return line.toLowerCase().split(" ");
     }
 
-    public void sortBySize() {
+    public void sortBooksAndPrintMorePorulare() {
 
-      List <Map.Entry<String, Integer>> sortAmount = new ArrayList<>(uniqueWords.entrySet());
+        List<Map.Entry<String, Integer>> sortAmount = new ArrayList<>(uniqueWords.entrySet());
         Collections.sort(sortAmount, new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                 return o1.getValue() - o2.getValue();
             }
         }.reversed());
-        System.out.println(sortAmount);
+        printFirstTenWords(sortAmount);
+
+    }
+
+
+    public void printFirstTenWords(List<Map.Entry<String, Integer>> list) {
+        int a = 0;
+
+        for (Map.Entry<String, Integer> entry : list) {
+            String key = entry.getKey();
+            Integer value = entry.getValue();
+            System.out.println(a + 1 + ". " + key + ": " + value);
+            a++;
+            if (a > 9)
+                break;
+        }
+
+
     }
 
 
