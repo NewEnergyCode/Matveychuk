@@ -1,16 +1,14 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class CountingWordsInBook {
     private static final String bookDividersForSplit = "•!,[].{}:;«»/`'’()<>?*|\"~•";
 
-    Map<String, Integer> uniqueWords = new HashMap<>();
+    private final Map<String, Integer> uniqueWords = new HashMap<>();
+    FileOutputStream fileOutputStream;
 
 
-    public Map<String, Integer> uniqueWordsCounter(File file) {
+    public void uniqueWordsCounter(File file) {
 
         try (FileReader fileReader = new FileReader(file);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
@@ -32,7 +30,6 @@ public class CountingWordsInBook {
             throw new RuntimeException(e);
         }
 
-        return uniqueWords;
     }
 
 
@@ -46,7 +43,7 @@ public class CountingWordsInBook {
     public void sortBooksAndPrintMorePorulare() {
 
         List<Map.Entry<String, Integer>> sortAmount = new ArrayList<>(uniqueWords.entrySet());
-        Collections.sort(sortAmount, new Comparator<Map.Entry<String, Integer>>() {
+        sortAmount.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                 return o1.getValue() - o2.getValue();
@@ -69,8 +66,8 @@ public class CountingWordsInBook {
             if (a > 9)
                 break;
         }
-        for (Map.Entry<String, Integer> i:list) {
-            if(i.getValue().equals(1)) b++;
+        for (Map.Entry<String, Integer> i : list) {
+            if (i.getValue().equals(1)) b++;
         }
 
         System.out.println("Uniqueness words: " + b);
