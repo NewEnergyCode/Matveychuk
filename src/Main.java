@@ -24,10 +24,11 @@ public class Main {
             CountingWordsInBook countingWordsInBook = new CountingWordsInBook();
             countingWordsInBook.uniqueWordsCounter(bookLibrary.get(bookName));
 
-
         } else {
             System.out.println("Your book is not found!");
         }
+
+
     }
 }
 

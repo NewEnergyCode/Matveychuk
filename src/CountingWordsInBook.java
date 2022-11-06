@@ -10,7 +10,7 @@ public class CountingWordsInBook {
         if (file.getName().equals("Verse.txt")) path = "src/Library/Verse_statistic.txt";
         else if (file.getName().equals("New Book.txt")) path = "src/Library/New Book_statistic.txt";
         else if (file.getName().equals("ГИД JAVA.txt")) path = "src/Library/ГИД JAVA_statistic.txt";
-        System.out.println(path);
+
         try (FileReader fileReader = new FileReader(file);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
@@ -56,32 +56,58 @@ public class CountingWordsInBook {
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(path);
 
-            int a = 0;
-            int b = 0;
+            int countPopularWords = 0;
+            int countUniqueWords = 0;
+            int countAllWords = 0;
 
             for (Map.Entry<String, Integer> entry : list) {
                 String key = entry.getKey();
                 Integer value = entry.getValue();
-                System.out.println(a + 1 + ". " + key + ": " + value);
-                String aa = "\n" + (a + 1) + ". " + key + ": " + value;
+                System.out.println(countPopularWords + 1 + ". " + key + ": " + value);
+                String aa = "\n" + (countPopularWords + 1) + ". " + key + ": " + value;
                 try {
                     fileOutputStream.write(aa.getBytes());
                 } catch (IOException e) {
                     System.out.println("File not found!");
                     throw new RuntimeException(e);
                 }
-                a++;
-                if (a > 9)
+                countPopularWords++;
+                if (countPopularWords > 9)
                     break;
             }
             for (Map.Entry<String, Integer> i : list) {
-                if (i.getValue().equals(1)) b++;
+                countAllWords++;
+                if (i.getValue().equals(1)) countUniqueWords++;
             }
-            System.out.println("Uniqueness words: " + b);
+            System.out.println("Uniqueness words: " + countUniqueWords);
+            try {
+                String convertcountAllWords = Integer.toString(countAllWords);
+                String convertcountUniqueWords = Integer.toString(countUniqueWords);
+                fileOutputStream.write(("\nUniqueness words: " + convertcountUniqueWords).getBytes());
+                fileOutputStream.write(("\nTotal number of words: " + convertcountAllWords).getBytes());
+            } catch (IOException e) {
+                System.out.println("File not found!");
+                throw new RuntimeException(e);
+            }
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");
             throw new RuntimeException(e);
         }
+        printStatistic();
+    }
+
+    public void printStatistic (){
+        File file = new File(path);
+        try {
+            Scanner scanner = new Scanner(file);
+            System.out.println("\nStatistic: ");
+            while (scanner.hasNextLine()) {
+                System.out.println(scanner.nextLine());            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+            throw new RuntimeException(e);
+        }
+
     }
 
 }
