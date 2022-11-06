@@ -7,9 +7,7 @@ public class CountingWordsInBook {
     private String path;
 
     public void uniqueWordsCounter(File file) {
-        if (file.getName().equals("Verse.txt")) path = "src/Library/Verse_statistic.txt";
-        else if (file.getName().equals("New Book.txt")) path = "src/Library/New Book_statistic.txt";
-        else if (file.getName().equals("ГИД JAVA.txt")) path = "src/Library/ГИД JAVA_statistic.txt";
+        path = "src/Library/statistic_" + file.getName();
 
         try (FileReader fileReader = new FileReader(file);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
@@ -96,13 +94,14 @@ public class CountingWordsInBook {
         printStatistic();
     }
 
-    public void printStatistic (){
+    public void printStatistic() {
         File file = new File(path);
         try {
             Scanner scanner = new Scanner(file);
             System.out.println("\nStatistic: ");
             while (scanner.hasNextLine()) {
-                System.out.println(scanner.nextLine());            }
+                System.out.println(scanner.nextLine());
+            }
         } catch (FileNotFoundException e) {
             System.out.println("File not found.");
             throw new RuntimeException(e);
