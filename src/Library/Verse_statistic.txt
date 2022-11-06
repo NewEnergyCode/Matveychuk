@@ -9,3 +9,5 @@
 8. работать: 1
 9. прекрасно: 1
 10. тебя: 1
+Uniqueness words: 19
+Total number of words: 20
