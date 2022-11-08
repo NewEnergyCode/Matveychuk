@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class Main {
 
-
     public static void main(String[] args) {
         Map<String, File> bookLibrary = new HashMap<>();
         bookLibrary.put("ГИД JAVA", new File("src/Library/ГИД JAVA.txt"));
