@@ -38,64 +38,40 @@ public class Main {
 
         productExercise4.add(new ProductExercise4("Book", 200, true, LocalDateTime.now()));
 
+        AppExercise appExercise = new AppExercise();
+
 //        1.2 Реализовать метод получения всех продуктов в виде списка,
 //        категория которых эквивалентна “Book” и цена более чем 250.
-        List<ProductExercise1> productBookMore250 = productExercise1.stream().
-                filter(x -> x.getProductType().equals("Book") && x.getProductPrice() > 250).toList();
-        System.out.println("\n 1.2: " + productBookMore250);
 
+        System.out.println("\n 1.2: " + appExercise.productBookMore250(productExercise1));
 
 //        2.2 Реализовать метод получения всех продуктов в виде списка,
 //        категория которых эквивалентна “Book” и с возможностью применения скидки.
 //        Финальный список должен содержать продукты с уже примененной скидкой 10%.
 //        Так если Продукт A был с ценой 1.0 USD, то его финальная цена будет оставлять 0.9 USD
-        List<String> productBookDiscount = productExercise2.stream().
-                filter(x -> x.getProductType().equals("Book") && x.isDiscount()).
-                map(x -> x.getProductType() + ", with discount 10%: "
-                        + (x.getProductPrice() - (x.getProductPrice() * 0.1)) + " $").
-                collect(Collectors.toList());
-        System.out.println("\n 2.2: " + productBookDiscount);
 
+        System.out.println("\n 2.2: " + appExercise.productBookDiscount(productExercise2));
 
 //        3.2 Реализовать метод получения самого дешевого продукта из категории “Book”
-        List<ProductExercise2> minimalBookPrice = List.of(productExercise2.stream().
-                filter(x -> x.getProductType().equals("Book")).
-                min(Comparator.comparing(ProductExercise2::getProductPrice)).get());
-        System.out.println("\n 3.2: " + "Minimal price of book: " + minimalBookPrice);
-
 //        3.3 В случае, если ни один продукт не найден
 //        (ситуация, когда нет продукта с искомой категорией), выбросить исключение с сообщением
 //        “Продукт [категория: имя_категории] не найден”.
-        String type = "Ring";
-        if (productExercise2.stream().noneMatch(x -> x.getProductType().equals(type))) {
-            System.out.println("\n 3.3: " + "Producte " + type + "is not found");
-        }
+
+        appExercise.productIsNotFound(productExercise2, "Book");
 
 //        4.2 Реализовать метод получения трех последних добавленных продуктов
-        List<ProductExercise4> exercise4 = productExercise4.stream().
-                sorted(Comparator.comparing(ProductExercise4::getDataOfAdd).reversed()).
-                limit(3).
-                collect(Collectors.toList());
-        System.out.println("\n 4.2: " + exercise4);
+
+        System.out.println("\n 4.2: " + appExercise.threeLastProduct(productExercise4));
 
 //        5.2 Реализовать метод калькуляции общей стоимости продуктов, которые отвечаю следующим критериям:
 //        - продукт добавлен в течении текущего года
 //        - продукт имеет тип “Book”
 //        - цена продукта не превышает 75
-        List<ProductExercise4> exercise5 = productExercise4.stream().
-                filter(s -> s.getProductType().equals("Book") &&
-                        s.getProductPrice() > 75 &&
-                        s.getDataOfAdd().getYear() == 2022).
-                collect(Collectors.toList());
-        System.out.println("\n 5.2: " + exercise5);
 
-        double exercise51 = productExercise4.stream().
-                filter(s -> s.getProductType().equals("Book") &&
-                        s.getProductPrice() > 75 &&
-                        s.getDataOfAdd().getYear() == 2022).
-                mapToDouble(ProductExercise4::getProductPrice).sum();
-        System.out.println("\n 5.2: " + exercise51);
+        appExercise.totalCostOfProduct(productExercise4);
     }
+
+
 
 
 }
